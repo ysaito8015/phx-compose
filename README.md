@@ -6,8 +6,8 @@ Docker を用いて Elixir/Phoenix アプリケーションの開発・学習を
 
 * Debian 10 (Buster)
 * Erlang/OTP 22.1.8
-* Elixir 1.9.4
-* Phoenix 1.4.11
+* Elixir 1.10.4
+* Phoenix 1.5.4
 * Node.js 10.18
 * npm 6.13
 

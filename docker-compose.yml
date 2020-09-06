@@ -1,5 +1,23 @@
-version: "3"
+version: "3.1"
 services:
+  postgres:
+    image: postgres:12.4-alpine
+    environment:
+      POSTGRES_USER: phoenix
+      POSTGRES_PASSWORD: phoenix
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  mysql:
+    image: mysql:8.0.21
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+      MYSQL_USER: phoenix
+      MYSQL_PASSWORD: phoenix
+    volumes:
+      - mysql_data:/var/lib/mysql
+
   web:
     build: .
     command: bash
@@ -11,4 +29,11 @@ services:
     working_dir: /apps
     ports:
       - "4000:4000"
+    depends_on:
+      - postgres
+      - mysql
     tty: true
+
+volumes:
+  postgres_data:
+  mysql_data:
