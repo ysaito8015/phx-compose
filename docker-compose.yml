@@ -1,5 +1,15 @@
-version: "3"
+version: "3.1"
 services:
+  postgres:
+    image: postgres:12.4-alpine
+    volumes:
+      - ./tmp/postgres:/var/lib/postgresql/data
+
+  mysql:
+    image: mysql:8.0.21
+    volumes:
+      - ./tmp/mysql:/var/lib/mysql
+
   web:
     build: .
     command: bash
@@ -11,4 +21,7 @@ services:
     working_dir: /apps
     ports:
       - "4000:4000"
+    depends_on:
+      - postgres
+      - mysql
     tty: true
