@@ -12,6 +12,13 @@ RUN curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
 
 RUN apt-get -y install nodejs
 
+RUN sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
+RUN sudo wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
+RUN apt-get update
+RUN apt-get -y install postgresql-client-12 default-mysql-client
+
+RUN apt-get update && apt-get -y upgrade
+
 ARG UID=1000
 ARG GID=1000
 
