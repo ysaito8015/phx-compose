@@ -34,4 +34,4 @@ WORKDIR /apps
 
 RUN mix local.hex --force
 RUN mix local.rebar --force
-RUN mix archive.install --force hex phx_new 1.5.4
+RUN mix archive.install --force hex phx_new 1.5.5
